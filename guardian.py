@@ -4,7 +4,7 @@ import os
 
 
 URL = "https://www.bankier.pl/inwestowanie/profile/quote.html?symbol=ZLOTO"
-DISCORD_WEEBHOOK = "DISCORD_WEBHOOK_URL"
+DISCORD_WEEBHOOK = DISCORD_WEBHOOK_URL
 HEADERS= {
      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
