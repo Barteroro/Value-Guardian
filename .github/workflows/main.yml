@@ -1,0 +1,42 @@
+name: Sprawdzanie Ceny Złota
+
+on:
+  schedule:
+    # Uruchamia skrypt codziennie o 07:00 i 19:00 UTC (czyli 08:00 i 20:00 w Polsce czasu zimowego)
+    - cron: '0 8,17 * * *'
+  workflow_dispatch: # Pozwala na ręczne odpalenie bota w zakładce Actions na GitHubie
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # Dajemy serwerowi prawo do zapisywania pliku dane.txt w Twoim kodzie
+
+    steps:
+    - name: Pobranie kodu z repozytorium
+      uses: actions/checkout@v4
+
+    - name: Instalacja Pythona
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Instalacja potrzebnych bibliotek
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: Uruchomienie bota
+      env:
+        # Pobieramy ukryty link do Discorda z GitHub Secrets
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      run: python guardian.py
+
+    - name: Zapisanie zmian w pliku dane.txt do repozytorium
+      run: |
+        git config --local user.email "actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add dane.txt
+        # Wyśle dane z powrotem na GitHuba tylko jeśli cena się zmieniła
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Automatyczna aktualizacja ceny złota" && git push)

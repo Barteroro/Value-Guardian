@@ -4,7 +4,7 @@ import os
 
 
 URL = "https://www.bankier.pl/inwestowanie/profile/quote.html?symbol=ZLOTO"
-DISCORD_WEEBHOOK = "https://discord.com/api/webhooks/1546203996367360210/DPQ5sema5EU6HScUC7DxzxOVbEOOzv9VFHg7wNcvKNOK1GHGigFqAOlz1J1u5l_7Ep-A"
+DISCORD_WEEBHOOK = "DISCORD_WEBHOOK_URL"
 HEADERS= {
      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
