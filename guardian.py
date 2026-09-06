@@ -30,7 +30,7 @@ if os.path.exists("dane.txt") and os.path.getsize("dane.txt") > 0:
         linie = [linia.strip() for linia in Tr.readlines() if linia.strip()]
 if linie:
         najstarsze = int(linie[0])
-        spadek = najstarsze * 0.8
+        spadek = najstarsze * 0.9
         
         if cena_nowa <= spadek:
             discord = {"content": "Cena spadła, najnowsza {}, najstarsza {}".format(cena_nowa, najstarsze)}
