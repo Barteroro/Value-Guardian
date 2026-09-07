@@ -3,7 +3,7 @@ name: Sprawdzanie Ceny Złota
 on:
   schedule:
     # Uruchamia skrypt codziennie o 07:00 i 19:00 UTC (czyli 08:00 i 20:00 w Polsce czasu zimowego)
-    - cron: '0 8,17 * * *'
+    - cron: '0 7,16 * * *'
   workflow_dispatch: # Pozwala na ręczne odpalenie bota w zakładce Actions na GitHubie
 
 jobs:
